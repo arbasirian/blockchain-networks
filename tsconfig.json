@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -13,8 +15,30 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@components": ["src/components/index.ts"],
+      "@helpers": ["src/helpers"],
+      "@types": ["src/types"],
+      "@models": ["src/common/models"],
+      "@store": ["src/redux/store.ts"],
+      "@redux/*": ["src/common/redux/*"],
+      "@pages/*": ["src/pages/*"],
+      "@icons/*": ["./public/icons/*"],
+      "@actions": ["src/redux/actions"],
+      "@selectors": ["src/redux/selectors"],
+      "@actionTypes": ["src/redux/actionTypes"],
+      "@utils/*": ["src/common/utils/*"],
+      "@ds": ["src/styles/exportable.module.scss"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "./src",
+    "src/**/*.module.scss",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+, "__tests__/home/home.test.ts.snap", "__tests__/searchbox.test.tsx"  ],
   "exclude": ["node_modules"]
 }
