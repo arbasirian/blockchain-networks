@@ -1,9 +1,10 @@
-import { HomePageProps } from "@types";
+import { HomePageProps } from "src/models";
 import { NextPage } from "next";
 import React from "react";
 
 const HomePage: NextPage<HomePageProps> = () => {
-  return <div>HomePage</div>;
+  console.log("process", process?.env?.NEXT_PUBLIC_BASE_URL_API);
+  return <div>HomePage {process?.env?.NEXT_PUBLIC_BASE_URL_API}</div>;
 };
 
 export default HomePage;

@@ -19,8 +19,7 @@
     "paths": {
       "@components": ["src/components/index.ts"],
       "@helpers": ["src/helpers"],
-      "@types": ["src/types"],
-      "@models": ["src/common/models"],
+      "@models": ["src/models"],
       "@store": ["src/redux/store.ts"],
       "@redux/*": ["src/common/redux/*"],
       "@pages/*": ["src/pages/*"],
