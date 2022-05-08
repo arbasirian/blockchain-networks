@@ -1,13 +1,31 @@
-import { HomePageProps } from "src/models";
+import React, { useEffect } from "react";
 import { NextPage } from "next";
-import React from "react";
-import { ConnectionStatus } from "@components";
+import { useSelector } from "react-redux";
 
-const HomePage: NextPage<HomePageProps> = () => {
-  console.log("process", process?.env?.NEXT_PUBLIC_BASE_URL_API);
+import { HomePageProps } from "@models";
+import { networkActions } from "@actions";
+import { usePromise } from "@hooks";
+import { networkSelectors } from "@selectors";
+import { Media, NetworkMobileView, NetworkTable } from "@components";
+
+const HomePage: NextPage<HomePageProps> = ({ networks }) => {
+  const promise = usePromise();
+  const list = useSelector(networkSelectors.networksList);
+  const keys = useSelector(networkSelectors.networkKeys);
+
+  useEffect(() => {
+    if (networks) promise(networkActions.loadAll(networks));
+  }, []);
+
   return (
-    <div>
-      HomePage <ConnectionStatus status></ConnectionStatus>
+    <div className="container">
+      <h1>Blockchain Networks</h1>
+      <Media lessThan="tablet">
+        <NetworkMobileView />
+      </Media>
+      <Media greaterThan="mobile">
+        <NetworkTable data={list} />
+      </Media>
     </div>
   );
 };

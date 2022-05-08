@@ -1,11 +1,14 @@
+@import "variables";
+
 .rectangle {
   border-radius: 4px;
   width: 14px;
   height: 14px;
+  margin: 0 auto;
 }
 .rectangle_active {
-  background-color: green;
+  background-color: $color_success;
 }
 .rectangle_deactive {
-  background-color: red;
+  background-color: $color_error;
 }

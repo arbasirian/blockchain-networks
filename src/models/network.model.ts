@@ -1,7 +1,7 @@
 import { FetchingDataType } from "@models";
 
 export interface NetworkStateModel {
-  all: Map<string, NetworkMapItemModel>;
+  all: Map<string, Partial<NetworkItemModel>>;
 }
 
 export interface NetworkItemModel {
@@ -17,6 +17,11 @@ export interface NetworkItemModel {
   node: string;
 }
 
-export interface NetworkMapItemModel extends Partial<NetworkItemModel> {
+export interface NetworksObjectModel {
+  [key: string]: Partial<NetworkItemModel>;
+}
+
+export interface NetworkListItemModel {
   key: string;
+  network: Partial<NetworkItemModel>;
 }

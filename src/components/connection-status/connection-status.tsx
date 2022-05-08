@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import styles from "./connection-status.module.scss";
 
 type props = {
-  status: boolean;
+  status?: boolean;
 };
 const ConnectionStatus: FC<props> = ({ status }) => {
   return (

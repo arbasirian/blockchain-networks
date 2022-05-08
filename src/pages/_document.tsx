@@ -16,6 +16,7 @@ class BlockchainNetworksDocument extends Document {
             type="text/css"
             dangerouslySetInnerHTML={{ __html: mediaStyles }}
           />
+          <title>Blockchain Networks</title>
         </Head>
         <body>
           <Main />

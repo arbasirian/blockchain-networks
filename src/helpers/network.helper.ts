@@ -1,4 +1,4 @@
-import { NetworkItemModel, NetworkMapItemModel } from "@models";
+import { NetworkItemModel } from "@models";
 
 /**
  * Factory function that validate network for showing in table
@@ -24,14 +24,14 @@ const validateNetwork = (network: NetworkItemModel) => {
  */
 const convertToMap = (networks: {
   [key: string]: NetworkItemModel;
-}): Map<string, NetworkMapItemModel> => {
-  const networkMap = new Map<string, NetworkMapItemModel>();
+}): Map<string, Partial<NetworkItemModel>> => {
+  const networkMap = new Map<string, Partial<NetworkItemModel>>();
 
   if (typeof networks === "undefined") return networkMap;
 
   Object.keys(networks).map((network) => {
-    if (validateNetwork(networks[network]))
-      return networkMap.set(network, { ...networks[network], key: network });
+    if (networks[network] && validateNetwork(networks[network]))
+      return networkMap.set(network, networks[network]);
   });
   return networkMap;
 };

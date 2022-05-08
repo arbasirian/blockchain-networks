@@ -8,9 +8,12 @@ export const networksMap = createSelector(
   (network) => network.all
 );
 
-export const networksList = createSelector([selectNetwork], (network) => [
-  ...network.all,
-]);
+export const networksList = createSelector([selectNetwork], (network) =>
+  [...network.all].map((item) => {
+    const [key, network] = item;
+    return { key, network };
+  })
+);
 
 export const networkKeys = createSelector([selectNetwork], (network) =>
   [...network.all].map((item) => {

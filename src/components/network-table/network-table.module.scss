@@ -1,0 +1,13 @@
+@import "variables";
+
+.full_table {
+  width: 100%;
+  border: 1px solid;
+  border-color: $color_border;
+  border-collapse: collapse;
+  border-radius: 4px;
+  margin-bottom: 40px;
+}
+.table_header {
+  height: 55px;
+}
