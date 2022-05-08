@@ -1,3 +1,7 @@
+import { NetworkItemModel } from "./network.model";
+
 export interface HomePageProps {
-  homeData: string;
+  networks: {
+    [key: string]: NetworkItemModel;
+  };
 }

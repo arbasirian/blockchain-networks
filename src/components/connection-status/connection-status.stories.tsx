@@ -12,4 +12,10 @@ const Template: ComponentStory<typeof ConnectionStatus> = (args) => (
 );
 
 export const Active = Template.bind({});
+Active.args = {
+  status: true,
+};
 export const Deactive = Template.bind({});
+Deactive.args = {
+  status: false,
+};

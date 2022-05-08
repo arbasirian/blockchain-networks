@@ -1,0 +1,17 @@
+@import "variables";
+
+:export {
+  color_primary: $color_primary;
+  color_background: $color_background;
+  color_surface: $color_surface;
+  color_action: $color_action;
+  color_caption: $color_caption;
+  color_placeholder: $color_placeholder;
+  color_border: $color_border;
+  color_natural: $color_natural;
+  color_error: $color_error;
+  color_warning: $color_warning;
+  color_success: $color_success;
+  color_hover: $color_hover;
+  color_link: $color_link;
+}
