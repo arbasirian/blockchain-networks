@@ -8,10 +8,7 @@ const Home: NextPage<HomePageProps> = (props) => {
   return <HomePage {...props} />;
 };
 
-export async function getServerSideProps(context) {
-  const host = context.req.headers.host;
-  const schema = host.indexOf("localhost") > -1 ? "http://" : "https://";
-
+export async function getServerSideProps() {
   const { data: networks } = await axios.get<{
     [key: string]: NetworkItemModel;
   }>(`${process?.env?.NEXT_PUBLIC_BASE_URL_API}/chains/properties`);

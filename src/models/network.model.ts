@@ -15,6 +15,7 @@ export interface NetworkItemModel {
   icon: string;
   name: string;
   node: string;
+  updating: boolean;
 }
 
 export interface NetworksObjectModel {

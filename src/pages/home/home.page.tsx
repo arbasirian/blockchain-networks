@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useSelector } from "react-redux";
 
@@ -14,7 +14,23 @@ const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   const keys = useSelector(networkSelectors.networkKeys);
 
   useEffect(() => {
-    if (networks) promise(networkActions.loadAll(networks));
+    if (networks) {
+      promise(networkActions.loadAll(networks));
+    }
+  }, []);
+
+  useEffect(() => {
+    function getStatus() {
+      Promise.all([
+        keys.map((item) => promise(networkActions.connectionStatus(item))),
+      ]);
+      console.log("1111", 1111);
+    }
+    getStatus();
+    const interval = setInterval(() => getStatus(), 10000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
