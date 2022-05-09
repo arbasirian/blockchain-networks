@@ -36,6 +36,11 @@ const convertToMap = (networks: {
   return networkMap;
 };
 
+/**
+ * Factory function that convert object of networks to array of network key
+ * @param { [key: string]: NetworkItemModel } networks
+ * @returns
+ */
 const availableNetworks = (networks: {
   [key: string]: NetworkItemModel;
 }): string[] => {
