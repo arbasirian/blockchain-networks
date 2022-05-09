@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useSelector } from "react-redux";
 
@@ -7,37 +7,31 @@ import { networkActions } from "@actions";
 import { usePromise } from "@hooks";
 import { networkSelectors } from "@selectors";
 import { Media, NetworkMobileView, NetworkTable } from "@components";
+import { networkHelper } from "@helpers";
 
 const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   const promise = usePromise();
-  const [intervalStatus, setIntervalStatus] = useState(false);
   const [sortType, setSortType] = useState<SortTypeEnum>(SortTypeEnum.DEFAULT);
 
-  const list = useSelector(networkSelectors.networksList);
-  const keys = useSelector(networkSelectors.networkKeys);
   const sortedList = useSelector((state: StoreModel) =>
     networkSelectors.networksSortedList(state, sortType)
   );
+  const updateStatus = () => {
+    networkHelper.availableNetworks(networks).forEach(async (item) => {
+      await promise(networkActions.connectionStatus(item));
+    });
+  };
 
   useEffect(() => {
     if (networks) promise(networkActions.loadAll(networks));
-  }, []);
-
-  useEffect(() => {
-    if (intervalStatus) return;
-    if (typeof keys === "undefined") return;
-
-    const updateStatus = () => {
-      keys.forEach(async (item) => {
-        await promise(networkActions.connectionStatus(item));
-      });
-    };
-    const interval = setInterval(() => updateStatus(), 10000);
-    setIntervalStatus(true);
+    const interval = setInterval(() => updateStatus(), 300000);
+    console.log("here222", 111);
     return () => {
+      console.log("here222", 2222);
+
       clearInterval(interval);
     };
-  }, [keys]);
+  }, []);
 
   const handleSortName = () => {
     switch (sortType) {
@@ -73,9 +67,4 @@ const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   );
 };
 
-const areEqual = (prevProps: HomePageProps, nextProps: HomePageProps) => {
-  if (prevProps.networks !== nextProps.networks) return false;
-
-  return true;
-};
-export default memo(HomePage, areEqual);
+export default HomePage;

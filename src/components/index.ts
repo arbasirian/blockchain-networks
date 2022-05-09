@@ -4,5 +4,4 @@ export { default as NetworkMobileViewRow } from "./network-mobile-view-row/netwo
 export { default as NetworkTable } from "./network-table/network-table";
 export { default as NetworkTableRow } from "./network-table-row/network-table-row";
 export { default as Spinner } from "./spinner/spinner";
-export { default as TableFilter } from "./table-filter/table-filter";
 export * from "./media/media.component";

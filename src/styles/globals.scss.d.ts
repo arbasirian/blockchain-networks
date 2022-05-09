@@ -1,7 +1,6 @@
 export type IStyles = {
   bar: string;
   container: string;
-  "fit-content": string;
   nprogress: string;
   peg: string;
 };

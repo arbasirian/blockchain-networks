@@ -29,7 +29,7 @@ const NetworkMobileViewRow: FC<Props> = ({ details }) => {
         </div>
         <div className={styles.row_item}>
           <span>Status:</span>
-          <div className="fit-content">
+          <div className={styles.status_wrapper}>
             <ConnectionStatus
               spin={details?.updating}
               status={details.connected}
