@@ -1,5 +1,6 @@
 import { createSelector } from "reselect";
 import { StoreModel } from "@models";
+import { networkActions } from "@actions";
 
 const selectNetwork = (state: StoreModel) => state.network;
 

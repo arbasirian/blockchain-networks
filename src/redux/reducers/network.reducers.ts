@@ -7,6 +7,7 @@ const initialState: NetworkStateModel = {
 };
 
 function appReducer(state = initialState, action) {
+  console.log("action", action);
   switch (action.type) {
     case networkActionTypes.LOAD_ALL_NETWORKS:
       return {

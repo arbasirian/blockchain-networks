@@ -13,5 +13,6 @@ export function connectionStatus(key: string) {
     type: networkActionTypes.LOAD_NETWORK_CONNECTION_STATUS,
     method: "get",
     url: `check/${key}`,
+    key,
   };
 }
