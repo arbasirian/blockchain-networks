@@ -21,7 +21,7 @@ export default function* axiosMiddleware(action: AxiosMiddlewareProps) {
   try {
     const { data } = yield call(axiosHelper, params);
 
-    yield put({ type: `${type}_SUCCESS`, data });
+    yield put({ type: `${type}_SUCCESS`, params, data });
     if (resolve) resolve(data);
   } catch (error: any) {
     const data = error?.response?.data || error;

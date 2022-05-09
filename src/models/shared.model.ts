@@ -10,3 +10,9 @@ export enum ActionMethodEnum {
   PATCH = "patch",
   PUT = "put",
 }
+
+export enum SortTypeEnum {
+  ASC = "ASC",
+  DESC = "DESC",
+  DEFAULT = "DEFAULT",
+}
