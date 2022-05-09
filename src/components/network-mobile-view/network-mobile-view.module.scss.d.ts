@@ -1,9 +1,5 @@
 export type IStyles = {
-  default_arrow: string;
-  down_arrow: string;
-  full_table: string;
-  table_header: string;
-  top_arrow: string;
+  sort_wrapper: string;
 };
 
 export type ClassNames = keyof IStyles;

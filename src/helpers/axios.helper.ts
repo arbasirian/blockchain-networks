@@ -11,10 +11,6 @@ export type AxiosHelperProps = {
 };
 const axiosHelper = ({ token, ...props }: AxiosHelperProps) => {
   const config: AxiosRequestConfig = {
-    headers: {
-      accept: "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
     baseURL: process.env.NEXT_PUBLIC_BASE_URL_API || "",
     ...props,
   };

@@ -7,14 +7,13 @@ const initialState: NetworkStateModel = {
 };
 
 function appReducer(state = initialState, action) {
-  console.log("action", action);
   switch (action.type) {
     case networkActionTypes.LOAD_ALL_NETWORKS:
       return {
         ...state,
         all: networkHelper.convertToMap(action.payload),
       };
-    case networkActionTypes.LOAD_NETWORK_CONNECTION_STATUS_REQUESTING:
+    case networkActionTypes.LOAD_NETWORK_CONNECTION_STATUS:
       return {
         ...state,
         all: state.all.set(action.key, {
@@ -25,17 +24,17 @@ function appReducer(state = initialState, action) {
     case networkActionTypes.LOAD_NETWORK_CONNECTION_STATUS_SUCCESS:
       return {
         ...state,
-        all: state.all.set(action.key, {
-          ...state.all.get(action.key),
-          connected: !action.payload,
+        all: state.all.set(action.params.key, {
+          ...state.all.get(action.params.key),
+          connected: action.data,
           updating: false,
         }),
       };
     case networkActionTypes.LOAD_NETWORK_CONNECTION_STATUS_FAILURE:
       return {
         ...state,
-        all: state.all.set(action.key, {
-          ...state.all.get(action.key),
+        all: state.all.set(action.params.key, {
+          ...state.all.get(action.params.key),
           updating: false,
         }),
       };

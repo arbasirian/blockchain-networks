@@ -1,0 +1,27 @@
+@import "variables";
+.row_wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  border-color: $color_border;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.row_item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}

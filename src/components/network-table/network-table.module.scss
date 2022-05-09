@@ -11,3 +11,27 @@
 .table_header {
   height: 55px;
 }
+
+.default_arrow {
+  cursor: pointer;
+  &::after {
+    content: "\2195";
+    padding-left: 10px;
+  }
+}
+.top_arrow {
+  cursor: pointer;
+
+  &::after {
+    content: "\2191";
+    padding-left: 10px;
+  }
+}
+.down_arrow {
+  cursor: pointer;
+
+  &::after {
+    content: "\2193";
+    padding-left: 10px;
+  }
+}
