@@ -23,7 +23,7 @@ const NetworkTableRow: FC<Props> = ({ details }) => {
       </td>
       <td className={styles.table_td}>{details.name}</td>
       <td className={styles.table_td}>
-        <ConnectionStatus status={details.connected} />
+        <ConnectionStatus spin={details?.updating} status={details.connected} />
       </td>
     </tr>
   );
