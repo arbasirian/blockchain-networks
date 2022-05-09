@@ -1,5 +1,5 @@
 export type IStyles = {
-  filter_wrapper: string;
+  spinner_wrapper: string;
 };
 
 export type ClassNames = keyof IStyles;

@@ -26,12 +26,16 @@ const NetworkMobileView: FC<Props> = ({ data, onSort, sortType }) => {
           <option value="DEFAULT">DEFAULT</option>
         </select>
       </div>
-      {data.map((item, index) => (
-        <NetworkMobileViewRow
-          key={[item.key, index].join("_")}
-          details={item.network}
-        />
-      ))}
+      {data && data.length > 0 ? (
+        data.map((item, index) => (
+          <NetworkMobileViewRow
+            key={[item.key, index].join("_")}
+            details={item.network}
+          />
+        ))
+      ) : (
+        <div className={styles.empty_row_wrapper}>No data found</div>
+      )}
     </>
   );
 };

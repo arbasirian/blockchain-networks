@@ -14,13 +14,15 @@ const NetworkMobileViewRow: FC<Props> = ({ details }) => {
   return (
     <div className={styles.row_wrapper}>
       <div className={styles.icon_wrapper}>
-        <Image
-          src={`${process?.env?.NEXT_PUBLIC_BASE_URL}images/${details?.icon}`}
-          width={32}
-          height={32}
-          alt={details?.name || ""}
-          priority
-        />
+        {details?.icon && (
+          <Image
+            src={`${process?.env?.NEXT_PUBLIC_BASE_URL}images/${details?.icon}`}
+            width={32}
+            height={32}
+            alt={details?.name || ""}
+            priority
+          />
+        )}
       </div>
       <div>
         <div className={styles.row_item}>
@@ -29,7 +31,7 @@ const NetworkMobileViewRow: FC<Props> = ({ details }) => {
         </div>
         <div className={styles.row_item}>
           <span>Status:</span>
-          <div className="fit-content">
+          <div className={styles.status_wrapper}>
             <ConnectionStatus
               spin={details?.updating}
               status={details.connected}

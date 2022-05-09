@@ -1,6 +1,19 @@
+$color_border: #e0e0e0;
+
 .sort_wrapper {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   padding: 20px 0;
+}
+
+.empty_row_wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  border-color: $color_border;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 70px;
 }

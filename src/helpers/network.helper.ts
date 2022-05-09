@@ -36,7 +36,20 @@ const convertToMap = (networks: {
   return networkMap;
 };
 
+const availableNetworks = (networks: {
+  [key: string]: NetworkItemModel;
+}): string[] => {
+  return Object.keys(networks)
+    .map((network) => {
+      if (networks[network] && validateNetwork(networks[network]))
+        return network;
+      return "";
+    })
+    .filter((i) => i);
+};
+
 export default {
   validateNetwork,
   convertToMap,
+  availableNetworks,
 };

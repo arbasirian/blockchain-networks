@@ -1,4 +1,4 @@
-@import "variables";
+$color_border: #e0e0e0;
 
 .full_table {
   width: 100%;
@@ -10,6 +10,14 @@
 }
 .table_header {
   height: 55px;
+}
+
+.table_body_tr {
+  text-align: center;
+  border: 1px solid;
+  border-color: $color_border;
+  border-collapse: collapse;
+  height: 50px;
 }
 
 .default_arrow {

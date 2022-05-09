@@ -1,4 +1,5 @@
 export type IStyles = {
+  empty_row_wrapper: string;
   sort_wrapper: string;
 };
 
