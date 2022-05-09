@@ -13,13 +13,15 @@ const NetworkTableRow: FC<Props> = ({ details }) => {
   return (
     <tr className={styles.table_body_tr}>
       <td className={styles.icon_wrapper}>
-        <Image
-          src={`${process?.env?.NEXT_PUBLIC_BASE_URL}images/${details?.icon}`}
-          width={32}
-          height={32}
-          alt={details?.name || ""}
-          priority
-        />
+        {details?.icon && (
+          <Image
+            src={`${process?.env?.NEXT_PUBLIC_BASE_URL}images/${details?.icon}`}
+            width={32}
+            height={32}
+            alt={details?.name || ""}
+            priority
+          />
+        )}
       </td>
       <td className={styles.table_td}>{details.name}</td>
       <td className={styles.table_td}>

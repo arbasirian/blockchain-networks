@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { useSelector } from "react-redux";
 
@@ -6,12 +6,15 @@ import { HomePageProps, SortTypeEnum, StoreModel } from "@models";
 import { networkActions } from "@actions";
 import { usePromise } from "@hooks";
 import { networkSelectors } from "@selectors";
-import { Media, NetworkMobileView, NetworkTable } from "@components";
+import { Media, NetworkMobileView, NetworkTable, Spinner } from "@components";
 import { networkHelper } from "@helpers";
+
+import styles from "./home.module.scss";
 
 const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   const promise = usePromise();
   const [sortType, setSortType] = useState<SortTypeEnum>(SortTypeEnum.DEFAULT);
+  const [firstLoading, setFirstLoading] = useState<boolean>(true);
 
   const sortedList = useSelector((state: StoreModel) =>
     networkSelectors.networksSortedList(state, sortType)
@@ -23,7 +26,10 @@ const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   };
 
   useEffect(() => {
-    if (networks) promise(networkActions.loadAll(networks));
+    if (networks) {
+      promise(networkActions.loadAll(networks));
+      setTimeout(() => setFirstLoading(false), 1000);
+    }
     const interval = setInterval(() => updateStatus(), 300000);
     return () => {
       clearInterval(interval);
@@ -46,20 +52,29 @@ const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   return (
     <div className="container">
       <h1>Blockchain Networks</h1>
-      <Media lessThan="tablet">
-        <NetworkMobileView
-          sortType={sortType}
-          onSort={setSortType}
-          data={sortedList}
-        />
-      </Media>
-      <Media greaterThan="mobile">
-        <NetworkTable
-          sortType={sortType}
-          onSort={handleSortName}
-          data={sortedList}
-        />
-      </Media>
+
+      {firstLoading ? (
+        <div className={styles.spinner_wrapper}>
+          <Spinner />
+        </div>
+      ) : (
+        <>
+          <Media lessThan="tablet">
+            <NetworkMobileView
+              sortType={sortType}
+              onSort={setSortType}
+              data={sortedList}
+            />
+          </Media>
+          <Media greaterThan="mobile">
+            <NetworkTable
+              sortType={sortType}
+              onSort={handleSortName}
+              data={sortedList}
+            />
+          </Media>
+        </>
+      )}
     </div>
   );
 };

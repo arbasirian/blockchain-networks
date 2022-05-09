@@ -12,6 +12,7 @@ type Props = {
 };
 const NetworkTable: FC<Props> = ({ data, onSort, sortType }) => {
   const sortStyle = useMemo(() => {
+    if (typeof data === "undefined" || data.length < 1) return "";
     if (sortType === SortTypeEnum.DEFAULT) return styles.default_arrow;
     if (sortType === SortTypeEnum.ASC) return styles.top_arrow;
     return styles.down_arrow;
@@ -28,12 +29,18 @@ const NetworkTable: FC<Props> = ({ data, onSort, sortType }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
-          <NetworkTableRow
-            key={[item.key, index].join("_")}
-            details={item.network}
-          />
-        ))}
+        {data && data.length > 0 ? (
+          data.map((item, index) => (
+            <NetworkTableRow
+              key={[item.key, index].join("_")}
+              details={item.network}
+            />
+          ))
+        ) : (
+          <tr className={styles.table_body_tr}>
+            <td colSpan={3}>No Data Found</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
