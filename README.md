@@ -1,8 +1,8 @@
-This is a blockchain network status website that showing the status of each network per 5 minutes
+This project is a blockchain network status website that shows the status of each network per 5 minutes.
 
 ## Getting Started
 
-First, you should create new env file base on sample env file. then you can run project with
+First, you should create a new env file base on the sample env file. then you can run it
 
 ```bash
 yarn dev
