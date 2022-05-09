@@ -25,10 +25,7 @@ const HomePage: NextPage<HomePageProps> = ({ networks }) => {
   useEffect(() => {
     if (networks) promise(networkActions.loadAll(networks));
     const interval = setInterval(() => updateStatus(), 300000);
-    console.log("here222", 111);
     return () => {
-      console.log("here222", 2222);
-
       clearInterval(interval);
     };
   }, []);
